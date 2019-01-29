@@ -1,5 +1,5 @@
 #!/bin/sh
-cat slaves | while read line
+cat workers | while read line
 do
     if [ "$line" = "-" ]; then
         echo "Skip $line"
