@@ -8,4 +8,3 @@ for line in sys.stdin:
     match = pat.search(line)
     if match:
         print '%s\t%s' % (match.group('ip'), 1)
-

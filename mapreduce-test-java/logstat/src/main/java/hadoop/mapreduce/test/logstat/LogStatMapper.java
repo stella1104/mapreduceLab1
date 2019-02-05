@@ -10,9 +10,6 @@ import java.io.IOException;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
-/**
- * Created by xiaoweiliang on 2019/1/28.
- */
 public class LogStatMapper extends Mapper<LongWritable, Text, Text, IntWritable> {
 
     protected void map(LongWritable key, Text value,Context context)
