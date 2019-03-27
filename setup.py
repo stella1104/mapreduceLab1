@@ -6,8 +6,8 @@ def writeHadoopConfigFile(name,xml):
     f.write(xml)
     f.close()
 
-mf = open("master","r")
-sf = open("slaves","r")
+mf = open("manager","r")
+sf = open("workers","r")
 mip = mf.read().strip()
 sip = sf.read().replace("-","")
 mf.close()
@@ -62,20 +62,19 @@ yarnSiteXml = """<?xml version="1.0" encoding="UTF-8"?>
       <name>yarn.resourcemanager.webapp.address</name>
       <value>0.0.0.0:8088</value>
    </property>
-   <property>  
-      <name>mapreduce.jobhistory.address</name>  
-      <value>%(mip)s:10020</value>  
-   </property>  
-   <property>  
-      <name>mapreduce.jobhistory.webapp.address</name>  
-      <value>0.0.0.0:19888</value>  
+   <property>
+      <name>mapreduce.jobhistory.address</name>
+      <value>%(mip)s:10020</value>
+   </property>
+   <property>
+      <name>mapreduce.jobhistory.webapp.address</name>
+      <value>0.0.0.0:19888</value>
    </property>
 </configuration>
 """ % dict(mip=mip)
 writeHadoopConfigFile("yarn-site.xml",yarnSiteXml)
 
-master = mip
-writeHadoopConfigFile("master",master)
-slaves = sip
-writeHadoopConfigFile("slaves",slaves)
-
+manager = mip
+writeHadoopConfigFile("manager",manager)
+workers = sip
+writeHadoopConfigFile("workers",workers)
